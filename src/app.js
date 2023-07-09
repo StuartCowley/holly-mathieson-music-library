@@ -1,4 +1,6 @@
 const express = require('express');
+const artistRouter = require('./routes/artist.js');
+const artistController = require('./controllers/artist.js');
 
 const app = express();
 

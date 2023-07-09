@@ -37,11 +37,11 @@ const dropDatabase = async (databaseName) => {
 
     console.log('Database dropped!');
   } catch (err) {
-        console.log(err);
-    }
+    console.log(err);
   } finally {
     client.end();
-  };
+  }
+};
 
-  const databaseName = loadEnv()
-dropDatabase(databaseName)
+const databaseName = loadEnv();
+dropDatabase(databaseName);
