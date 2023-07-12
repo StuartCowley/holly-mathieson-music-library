@@ -1,8 +1,7 @@
 const express = require('express');
-const app = express();
+const { createArtist } = require('../controllers/artists');
+const app = express.Router();
 
-app.post('../controllers/artist.js', (req, res) => {
-  res.send('POST request to create artist');
-});
+app.post('/artists', createArtist);
 
-module.exports = { app };
+module.exports = { app, createArtist };

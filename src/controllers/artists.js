@@ -1,3 +1,5 @@
+const db = require('pg');
+
 const createArtist = async (req, res) => {
   const { name, genre } = req.body;
 
