@@ -81,7 +81,7 @@ const deleteArtist = async (req, res) => {
     const {
       rows: [artist],
     } = await db.query('DELETE FROM artists WHERE id = $1', [id]);
-    res.status(200).json(artist);
+    res.status(200).json(res.body);
   } catch (err) {
     console.log(err);
     res.status(500).json(err.message);

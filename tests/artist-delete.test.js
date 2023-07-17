@@ -22,20 +22,16 @@ describe('Delete Artist', () => {
 
       expect(status).to.equal(200);
 
-      //   expect(body).to.deep.equal({
-      //     id: artist.id,
-      //     name: 'Tame Impala',
-      //     genre: 'rock',
-      //   });
+      //   expect(body).to.deep.equal({ id: artist.id, name: 'Tame Impala', genre: 'rock' })
     });
 
-    // xit('returns a 404 if the artist does not exist', async () => {
-    //   const { status, body } = await request(app)
-    //     .delete('/artists/999999999')
-    //     .send();
+    xit('returns a 404 if the artist does not exist', async () => {
+      const { status, body } = await request(app)
+        .delete('/artists/999999999')
+        .send();
 
-    //   expect(status).to.equal(404);
-    //   expect(body.message).to.equal('artist 999999999 does not exist');
-    // });
+      expect(status).to.equal(404);
+      expect(body.message).to.equal('artist 999999999 does not exist');
+    });
   });
 });
