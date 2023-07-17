@@ -74,4 +74,24 @@ const updateArtist = async (req, res) => {
   }
 };
 
-module.exports = { createArtist, getAllArtists, artistById, updateArtist };
+const deleteArtist = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const {
+      rows: [artist],
+    } = await db.query('DELETE FROM artists WHERE id = $1', [id]);
+    res.status(200).json(artist);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err.message);
+  }
+};
+
+module.exports = {
+  createArtist,
+  getAllArtists,
+  artistById,
+  updateArtist,
+  deleteArtist,
+};
