@@ -1,11 +1,9 @@
 const express = require('express');
-// const { Artist } = require('../models');
+// const { Artist } = require('../models/index');
 const app = express();
-
-const { artistRouter } = require('./routes/artist.js');
 
 app.use(express.json());
 
-app.use(artistRouter);
+app.use('/artists', require('./routes/artist'));
 
 module.exports = app;
