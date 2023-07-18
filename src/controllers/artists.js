@@ -16,7 +16,7 @@ const createArtist = async (req, res) => {
   }
 };
 
-const getAllArtists = async (_, res) => {
+const readAllArtists = async (_, res) => {
   try {
     const { rows } = await db.query('SELECT * FROM Artists');
     res.status(200).json(rows);
@@ -25,7 +25,7 @@ const getAllArtists = async (_, res) => {
   }
 };
 
-const artistById = async (req, res) => {
+const readArtistById = async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -92,8 +92,8 @@ const deleteArtist = async (req, res) => {
 
 module.exports = {
   createArtist,
-  getAllArtists,
-  artistById,
+  readAllArtists,
+  readArtistById,
   updateArtist,
   deleteArtist,
 };
