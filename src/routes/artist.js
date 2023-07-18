@@ -8,10 +8,10 @@ const {
 } = require('../controllers/artists');
 const app = express.Router();
 
-app.post('/', createArtist);
-app.get('/', getAllArtists);
-app.get('/:id', artistById);
-app.patch('/:id', updateArtist);
-app.delete('/:id', deleteArtist);
+app.post('/artists/', createArtist);
+app.get('/artists/', getAllArtists);
+app.get('/artists/:id', artistById);
+app.patch('/artists/:id', updateArtist);
+app.delete('/artists/:id', deleteArtist);
 
 module.exports = app;
