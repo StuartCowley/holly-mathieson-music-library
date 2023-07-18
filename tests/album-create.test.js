@@ -13,7 +13,7 @@ describe('create album', () => {
     );
     artist = rows[0];
   });
-  describe('/artists/:id/albums', () => {
+  describe('/artists/:artistId/albums', () => {
     describe('POST', () => {
       it('creates a new album in the database', async () => {
         const { status, body } = await request(app)

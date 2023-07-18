@@ -1,0 +1,1 @@
+ALTER TABLE Albums DROP COLUMN artistId

@@ -6,12 +6,15 @@ const {
   updateArtist,
   deleteArtist,
 } = require('../controllers/artists');
-const app = express.Router();
 
-app.post('/artists/', createArtist);
-app.get('/artists/', getAllArtists);
-app.get('/artists/:id', artistById);
-app.patch('/artists/:id', updateArtist);
-app.delete('/artists/:id', deleteArtist);
+// const { createAlbum } = require('../controllers/albums');
+const artistRouter = express.Router();
 
-module.exports = app;
+artistRouter.post('/artists/', createArtist);
+artistRouter.get('/artists/', getAllArtists);
+artistRouter.get('/artists/:id', artistById);
+artistRouter.patch('/artists/:id', updateArtist);
+artistRouter.delete('/artists/:id', deleteArtist);
+// artistRouter.post('/artists/:id/albums', createAlbum);
+
+module.exports = artistRouter;

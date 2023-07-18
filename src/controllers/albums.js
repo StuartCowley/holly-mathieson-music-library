@@ -17,4 +17,13 @@ const createAlbum = async (req, res) => {
   }
 };
 
-module.exports = { createAlbum };
+const getAllAlbums = async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM Albums');
+    res.status(200).json(rows);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while finding albums.' });
+  }
+};
+
+module.exports = { createAlbum, getAllAlbums };

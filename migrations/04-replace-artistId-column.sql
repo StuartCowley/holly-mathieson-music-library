@@ -1,0 +1,1 @@
+ALTER TABLE Albums ADD COLUMN artistId INT REFERENCES Artists(id)
