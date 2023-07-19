@@ -8,6 +8,7 @@ const {
 } = require('../controllers/artists');
 
 const { createAlbum } = require('../controllers/albums');
+
 const artistRouter = express.Router();
 
 artistRouter.post('/artists/', createArtist);
