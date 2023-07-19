@@ -3,7 +3,22 @@
 const db = require('../db/index');
 
 const createAlbum = async (req, res) => {
-  res.status(201).json({ message: `we are communicating` });
+  const { artistId } = req.params;
+  const { title, releaseYear } = req.body;
+
+  try {
+    const {
+      rows: [album],
+    } = await db.query(
+      'INSERT INTO Albums (title, releaseYear, artistId) VALUES ($1, $2, $3) RETURNING *',
+      [title, releaseYear, artistId]
+    );
+    res.status(201).json(album);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: 'An error occurred while creating the album.' });
+  }
 };
 
 const readAllAlbums = async (req, res) => {

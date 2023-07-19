@@ -16,6 +16,6 @@ artistRouter.get('/artists/', readAllArtists);
 artistRouter.get('/artists/:id', readArtistById);
 artistRouter.patch('/artists/:id', updateArtist);
 artistRouter.delete('/artists/:id', deleteArtist);
-artistRouter.post('/artists/:id/albums', createAlbum);
+artistRouter.post('/artists/:artistId/albums', createAlbum);
 
 module.exports = artistRouter;

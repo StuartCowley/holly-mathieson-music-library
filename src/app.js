@@ -1,5 +1,4 @@
 const express = require('express');
-// const { Artist } = require('../models/index');
 const app = express();
 const artistRouter = require('./routes/artist');
 const albumRouter = require('./routes/album');
