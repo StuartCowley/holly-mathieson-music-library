@@ -8,7 +8,7 @@ const createAlbum = async (req, res) => {
     const {
       rows: [album],
     } = await db.query(
-      `INSERT INTO Albums (title, releaseYear, artistId) VALUES ($1, $2, $3) RETURNING *`,
+      `INSERT INTO Albums (title, releaseYear, artistId VALUES ($1, $2, $3) RETURNING *`,
       [title, releaseYear, artistId]
     );
     res.status(201).json(album);
