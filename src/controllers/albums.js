@@ -35,9 +35,9 @@ const readAlbumById = async (req, res) => {
     const { id } = req.params;
     const {
       rows: [album],
-    } = await db.query('SELECT * FROM albums WHERE id = $1', [id]);
+    } = await db.query('SELECT * FROM Albums WHERE id = $1', [id]);
     if (!album) {
-      return res.status(404).json({ message: `album does not exist` });
+      return res.status(404).json({ message: `album ${id} does not exist` });
     }
 
     res.status(200).json(album);
@@ -46,4 +46,19 @@ const readAlbumById = async (req, res) => {
   }
 };
 
-module.exports = { createAlbum, readAllAlbums, readAlbumById };
+const deleteAlbum = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      rows: [album],
+    } = await db.query('DROP FROM Albums WHERE id = $1', [id]);
+    if (!album) {
+      return res.status(404).json({ message: `album ${id} does not exist` });
+    }
+    res.status(200).json(album);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+};
+
+module.exports = { createAlbum, readAllAlbums, readAlbumById, deleteAlbum };
