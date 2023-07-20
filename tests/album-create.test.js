@@ -2,40 +2,33 @@ const { expect } = require('chai');
 const request = require('supertest');
 const db = require('../src/db');
 const app = require('../src/app');
-const { describe, it, beforeEach } = require('mocha');
+const { describe, it, before } = require('mocha');
 
-// describe('create album', async () => {
-//   describe('POST /artists/{id}/albums', () => {
-//     let artist;
-//     beforeEach(async () => {
-//       const { rows } = await db.query(
-//         'INSERT INTO Artists (name, genre) VALUES($1, $2) RETURNING *',
-//         ['The Beatles', '60s']
-//       );
+describe('POST /albums/{id}', () => {
+  let beatles;
+  let albums;
+  before(async () => {
+    const { rows } = await db.query(
+      'INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *',
+      ['The Beatles', '60s']
+    );
+    beatles = rows[0];
+    console.log(beatles);
+    console.log(beatles.id);
+  });
 
-//       artist = rows[0];
-//     });
+  describe('POST /artists/{id}/albums', () => {
+    it('adds an album to the database', async () => {
+      const { status, body } = await request(app)
+        .post(`/artists/${beatles.id}/albums`)
+        .send({
+          title: 'Sargent Peppers Lonely Hearts Club Band',
+          releaseYear: 1967,
+        });
 
-//     it('creates a new album in the database', async () => {
-//       const { status, body } = await request(app)
-//         .post(`/artists/${artist.id}/albums`)
-//         .send({
-//           title: 'Sargent Peppers Lonely Hearts Club Band',
-//           releaseYear: 1967,
-//         });
-//       console.log(body);
-//       expect(status).to.equal(201);
-//       expect(body.title).to.equal('Sargent Peppers Lonely Hearts Club Band');
-//       expect(body.releaseYear).to.equal(1967);
-
-//       const {
-//         rows: [albumData],
-//       } = await db.query(`SELECT * FROM Albums WHERE artistId = ${artist.id}`);
-//       expect(albumData.title).to.equal(
-//         'Sargent Peppers Lonely Hearts Club Band'
-//       );
-//       expect(albumData.releaseYear).to.equal(1967);
-//       expect(albumData.artistid).to.equal(artist.id);
-//     });
-//   });
-// });
+      expect(status).to.equal(201);
+      expect(status).not.to.equal(300);
+      expect(body.title).to.equal('Sargent Peppers Lonely Hearts Club Band');
+    });
+  });
+});

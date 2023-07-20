@@ -45,9 +45,6 @@ describe('DELETE /albums/{id}', () => {
   describe('DELETE /albums/{id}', () => {
     it('drops an album from the database with the correct id', async () => {
       album = albums[0];
-      console.log(album);
-      console.log(`The album id is ${album.id}`);
-      console.log(albums.length);
 
       const { status, body } = await request(app)
         .delete(`/albums/${album.id}`)
