@@ -45,17 +45,19 @@ describe('READ /albums/{id}', () => {
     it('returns all albums', async () => {
       const { status, body } = await request(app).get('/albums').send();
       expect(status).to.equal(200);
-      expect(body.length).to.equal(4);
+      expect(body.length).to.equal(albums.length);
     });
   });
 
-  describe('GET /albums/:id', () => {
+  describe('GET /albums/{id}', () => {
     it('returns an album in the database with the correct id', async () => {
-      const { status } = await request(app).get('/albums/1').send();
+      const { status, body } = await request(app)
+        .get(`/albums/${albums[0].id}`)
+        .send();
 
       expect(status).to.equal(200);
       expect(status).not.to.equal(300);
-      // expect(body).to.deep.equal(albums[1]);
+      expect(body).to.deep.equal(albums[0]);
     });
 
     it('returns a 404 if the album does not exist', async () => {
