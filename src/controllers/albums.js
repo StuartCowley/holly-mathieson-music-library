@@ -51,7 +51,7 @@ const deleteAlbum = async (req, res) => {
     const { id } = req.params;
     const {
       rows: [album],
-    } = await db.query('DROP FROM Albums WHERE id = $1', [id]);
+    } = await db.query('DELETE FROM Albums WHERE id = $1 RETURNING *', [id]);
     if (!album) {
       return res.status(404).json({ message: `album ${id} does not exist` });
     }
