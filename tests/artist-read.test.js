@@ -24,7 +24,6 @@ describe('Read Artists', () => {
 
     artists = responses.map(({ rows }) => rows[0]);
   });
-
   describe('GET /artists', () => {
     it('returns all artist records in the database', async () => {
       const { status, body } = await request(app).get('/artists').send();
