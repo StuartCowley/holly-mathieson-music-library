@@ -63,40 +63,40 @@ const deleteAlbum = async (req, res) => {
 
 const updateAlbum = async (req, res) => {
   const { id } = req.params;
-  const { title, releaseYear, artistId } = req.body;
+  const { title, releaseYear, artistid } = req.body;
 
   let query, params;
 
-  if (title && releaseYear && artistId) {
-    query = `UPDATE artists SET title = $1, releaseYear = $2, artistId = $3 WHERE id = $4 RETURNING *`;
-    params = [title, releaseYear, artistId, id];
+  if (title && releaseYear && artistid) {
+    query = `UPDATE Albums SET title = $1, releaseYear = $2, artistId = $3 WHERE id = $4 RETURNING *`;
+    params = [title, releaseYear, artistid, id];
   } else if (title && releaseYear) {
-    `UPDATE artists SET title = $1, releaseYear = $2 WHERE id = $3 RETURNING *`;
+    query = `UPDATE Albums SET title = $1, releaseYear = $2 WHERE id = $3 RETURNING *`;
     params = [title, releaseYear, id];
-  } else if (releaseYear && artistId) {
-    `UPDATE artists SET releaseYear = $1, artistId = $2 WHERE id = $3 RETURNING *`;
-    params = [releaseYear, artistId, id];
+  } else if (releaseYear && artistid) {
+    query = `UPDATE Albums SET releaseYear = $1, artistId = $2 WHERE id = $3 RETURNING *`;
+    params = [releaseYear, artistid, id];
   } else if (title) {
-    `UPDATE artists SET title = $1 WHERE id = $2 RETURNING *`;
+    query = `UPDATE Albums SET title = $1 WHERE id = $2 RETURNING *`;
     params = [title, id];
   } else if (releaseYear) {
-    `UPDATE artists SET releaseYear = $1 WHERE id = $2 RETURNING *`;
+    query = `UPDATE Albums SET releaseYear = $1 WHERE id = $2 RETURNING *`;
     params = [releaseYear, id];
   } else if (artistId) {
-    `UPDATE artists SET artistId = $1 WHERE id = $2 RETURNING *`;
+    query = `UPDATE Albums SET artistId = $1 WHERE id = $2 RETURNING *`;
     params = [artistId, id];
   }
 
   try {
     const {
-      rows: [artist],
+      rows: [album],
     } = await db.query(query, params);
 
-    if (!artist) {
-      return res.status(404).json({ message: `artist ${id} does not exist` });
+    if (!album) {
+      return res.status(404).json({ message: `album ${id} does not exist` });
     }
 
-    res.status(200).json(artist);
+    res.status(200).json(album);
   } catch (err) {
     console.log(err);
     res.status(500).json(err.message);
