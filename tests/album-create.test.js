@@ -12,8 +12,6 @@ describe('POST /albums/{id}', () => {
       ['The Beatles', '60s']
     );
     beatles = rows[0];
-    console.log(beatles);
-    console.log(beatles.id);
   });
 
   describe('POST /artists/{id}/albums', () => {
