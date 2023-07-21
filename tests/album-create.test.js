@@ -6,7 +6,6 @@ const { describe, it, before } = require('mocha');
 
 describe('POST /albums/{id}', () => {
   let beatles;
-  let albums;
   before(async () => {
     const { rows } = await db.query(
       'INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *',
