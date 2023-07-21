@@ -63,19 +63,19 @@ const deleteAlbum = async (req, res) => {
 
 const updateAlbum = async (req, res) => {
   const { id } = req.params;
-  const { title, releaseYear, artistid } = req.body;
+  const { title, releaseYear, artistId } = req.body;
 
   let query, params;
 
-  if (title && releaseYear && artistid) {
+  if (title && releaseYear && artistId) {
     query = `UPDATE Albums SET title = $1, releaseYear = $2, artistId = $3 WHERE id = $4 RETURNING *`;
-    params = [title, releaseYear, artistid, id];
+    params = [title, releaseYear, artistId, id];
   } else if (title && releaseYear) {
     query = `UPDATE Albums SET title = $1, releaseYear = $2 WHERE id = $3 RETURNING *`;
     params = [title, releaseYear, id];
-  } else if (releaseYear && artistid) {
+  } else if (releaseYear && artistId) {
     query = `UPDATE Albums SET releaseYear = $1, artistId = $2 WHERE id = $3 RETURNING *`;
-    params = [releaseYear, artistid, id];
+    params = [releaseYear, artistId, id];
   } else if (title) {
     query = `UPDATE Albums SET title = $1 WHERE id = $2 RETURNING *`;
     params = [title, id];
