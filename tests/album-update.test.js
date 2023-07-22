@@ -24,8 +24,6 @@ describe('UPDATE /albums/{id}', () => {
   });
   describe('PATCH /albums/{id}', () => {
     it('updates all fields and returns the album', async () => {
-      console.log(`${album.title}: id number ${album.id}`);
-      console.log(`${artist.name}: id number ${artist.id}`);
       const { status, body } = await request(app)
         .patch(`/albums/${album.id}`)
         .send({ title: 'Rubber Soul', releaseYear: 1965 });
