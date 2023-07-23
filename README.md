@@ -31,7 +31,7 @@ To run tests, run the following command
 
 ## API Reference
 
-### -- ALBUMS  --
+### ALBUMS 🎵 🎧
 
 #### CREATE an album
 
@@ -89,7 +89,7 @@ To run tests, run the following command
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `int` | **Required**. ID of item to fetch |
 
-### -- ARTISTS --
+### ARTISTS 🎸 🎙️ 🥁
 
 #### CREATE artist
 
