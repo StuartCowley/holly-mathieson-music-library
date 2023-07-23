@@ -6,12 +6,24 @@ Backend API and database for storing artist & album data. Both tables linked by 
 
 ## Installation
 
-Install my-project with npm
-
 ```bash
-  npm install music-library
-  cd music-library
+git clone https://github.com/HollyJM81/music-library.git
 ```
+```bash
+npm install
+```
+
+Create .env and .env.test files
+  - Enter your database's credentials in both (make sure PGDATABASE name in .env.test is different)
+
+DOuble check that .env and .env.test are in .gitignore... 🥷
+
+To run the tests:
+npm test
+
+To start the server:
+npm start
+
     
 ## Tech Stack
 
