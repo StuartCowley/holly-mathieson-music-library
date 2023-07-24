@@ -169,7 +169,7 @@ Finally, hurrah for Postman! It took me a while to feel fluent with it, as a too
 
 ## Acknowledgements
 
- - Dragos Neagu and his legendary team of backend tutors at Command Shift. 
+ - Dragoș-Robert Neagu and his legendary team of backend tutors at Command Shift. 
  - My delightful cohort companions - such a good crew for co-learning!
 
  
