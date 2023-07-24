@@ -14,16 +14,13 @@ npm install
 ```
 
 Create .env and .env.test files
-  - Enter your database's credentials in both (make sure PGDATABASE name in .env.test is different)
+Enter your database's credentials in both (make sure PGDATABASE name in .env.test is different)
 
-DOuble check that .env and .env.test are in .gitignore... 🥷
+Double check that .env and .env.test are in .gitignore... 🥷
 
-To run the tests:
-npm test
-
-To start the server:
+```bash
 npm start
-
+```
     
 ## Tech Stack
 
@@ -33,8 +30,6 @@ Testing - Mocha, Supertest, chai
 
 
 ## Running Tests
-
-To run tests, run the following command
 
 ```bash
   npm test
@@ -164,17 +159,17 @@ To run tests, run the following command
 
 ## Lessons Learned
 
-This was an epic learning curve in routers and controllers - connecting to a database through an API and serving data back to a client. The entire project hinges on using TDD to write the 4 major CRUD functions for both artists and albums.
+This was an epic learning curve in routers and controllers - connecting to a database through an API and serving data back to a client. The success of the project hinges on using TDD to write the 4 major CRUD functions for both artists and albums.
 
 This was my first time working with migrations (if you take a look at that directory, you'll see how long it took to get my head around postgres constraints...), mocha tests, separate routers and controllers, and express.
 
-Biggest takeaway: don't make cut-and-paste Franken-code! It never works. Instead I really tried to be disciplined with zooming out to determine what functionality I actually needed, what resources I already had at my disposal, and where the gaps were in the logic. 
+Biggest takeaway: don't make cut-and-paste Franken-code! It never works. Instead I really tried to be disciplined with zooming out to determine what functionality I actually needed, what resources I already had at my disposal, and where the gaps were in the logic. Huge thanks to my classmate Dal Bahia, who finished the project well ahead of everyone - I was grateful to have a) someone to chase, and b) a working codebase to compare to, when I hit a brickwall with updateAlbum and its associated test.
 
-Hurrah for Postman! It took me a while to feel fluent with it, as a tool, but in the end I found it super helpful for testing routes and API connectivity. Working directly in PGAdmin was also really useful to cofirm the right syntax for inline postgres queries.
+Finally, hurrah for Postman! It took me a while to feel fluent with it, as a tool, but in the end I found it super helpful for testing routes and API connectivity. Working directly in PGAdmin was also really useful to cofirm the right syntax for inline postgres queries.
 
 ## Acknowledgements
 
- - Dragos and his legendary team of backend tutors at Command Shift. 
+ - Dragos Neagu and his legendary team of backend tutors at Command Shift. 
  - My delightful cohort companions - such a good crew for co-learning!
 
  
